@@ -1,0 +1,24 @@
+{
+  "name": "notetaking",
+  "version": "1.0.0",
+  "description": "Yet another note taking application",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/binaryjohn/notetaking.git"
+  },
+  "keywords": [
+    "WalmartLabs",
+    "demo",
+    "audition"
+  ],
+  "author": "Wm. Weatherspoon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/binaryjohn/notetaking/issues"
+  },
+  "homepage": "https://github.com/binaryjohn/notetaking#readme"
+}
