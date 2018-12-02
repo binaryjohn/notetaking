@@ -10,6 +10,7 @@ import firebase from './utils';
 class App extends Component {
   constructor(props){
     super(props);
+    this.submitNewNote = this.submitNewNote.bind(this);
     this.state = {
       notes: []
     }
@@ -20,7 +21,7 @@ class App extends Component {
       myNotesRef.on('value', snap => {
           const notesObj = snap.val()
           const notes = Object.keys(notesObj).map(key => {
-                return {...notesObj[key], ...{id:key}}
+                return {...notesObj[key]}
           })
           this.setState({notes})
       })
@@ -28,8 +29,8 @@ class App extends Component {
   submitNewNote(noteObj) {
     const key = firebase.database().ref().push().key
     const updates = {};
-    updates[key] = noteObj;
-    // firebase.database().ref(`notes/`);
+    const id = this.state.notes.length+1
+    updates[key] = {...noteObj, ...{id}};
     return firebase.database().ref(`notes/1234`).update(updates);
   }
   render() {
