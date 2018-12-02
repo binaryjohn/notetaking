@@ -1,10 +1,11 @@
-import firebase from 'firebase/app';
+import firebase from 'firebase';
 import config from '../config';
 
-const firebaseRef = firebase.initializeApp(config);
+// firebase.initializeApp(config);
 
-const getRefInfo = () => firebaseRef.name
+// export default firebase
 
-export {
-    getRefInfo
-}
+
+export default (!firebase.apps.length
+    ? firebase.initializeApp(config)
+    : firebase.app());

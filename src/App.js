@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './components/Home';
+import {Main, Root} from './components';
 import NoteList from './components/NoteList';
-import {getRefInfo} from './utils';
+import NewNote from './components/NewNote';
+import firebase from './utils';
 
 class App extends Component {
   constructor(props){
@@ -19,17 +21,27 @@ class App extends Component {
   }
 
   componentDidMount() {
-      const refInfo = getRefInfo();
-      console.log(refInfo);
+      console.log('mounting');
+      firebase.database().ref(`notes/1234`);
+      console.log(firebase);
+  }
+  submitNewNote(noteObj) {
+    console.log(noteObj)
+    const key = firebase.database().ref().push().key
+    console.log(key);
+    // firebase.database().ref(`notes/`);
   }
   render() {
     return (
-        <div>
-            <NoteList notes={this.state.notes}/>
-            <Router>
-                <Route path="/" component={Home}/>
-            </Router>
-        </div>
+        <Router>
+            <Root>
+                <NoteList notes={this.state.notes}/>
+                <Main>
+                    <Route path="/" component={Home} exact/>
+                    <Route path="/new" render={() => <NewNote handleSubmit={this.submitNewNote}/>}/>
+                </Main>
+            </Root>
+        </Router>
     )
   }
 }
