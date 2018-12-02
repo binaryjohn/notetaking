@@ -24,7 +24,6 @@ class NewNote extends React.Component{
     }
     handleSubmit(evt) {
         evt.preventDefault()
-        console.log("Submitted!");
         this.props.handleSubmit({...this.state, ...{created: new Date()}});
     }
     render(){
