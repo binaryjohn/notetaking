@@ -4,7 +4,7 @@ const NoteList = props => (
     <ul>
         {props.notes.map((note,index)=>
             <li key={index}>
-                note.summary
+                {note.summary}
             </li>)}
     </ul>
 )

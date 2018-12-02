@@ -11,25 +11,26 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      notes: [
-        {summary:"Hello World"},
-        {summary:"Goodybye Summer"},
-        {summary:"Greet the Sun"},
-        {summary:"Something Wicked this way comes"}
-      ]
+      notes: []
     }
   }
 
   componentDidMount() {
-      console.log('mounting');
-      firebase.database().ref(`notes/1234`);
-      console.log(firebase);
+      const myNotesRef = firebase.database().ref(`notes/1234`);
+      myNotesRef.on('value', snap => {
+          const notesObj = snap.val()
+          const notes = Object.keys(notesObj).map(key => {
+                return {...notesObj[key], ...{id:key}}
+          })
+          this.setState({notes})
+      })
   }
   submitNewNote(noteObj) {
-    console.log(noteObj)
     const key = firebase.database().ref().push().key
-    console.log(key);
+    const updates = {};
+    updates[key] = noteObj;
     // firebase.database().ref(`notes/`);
+    return firebase.database().ref(`notes/1234`).update(updates);
   }
   render() {
     return (
