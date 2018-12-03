@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const myNotesRef = firebase.database().ref(`notes/1234`);
+    const myNotesRef = firebase.database().ref(`notes/abcd`);
     myNotesRef.on('value', snap => {
       const notesObj = snap.val();
       const notes = Object.keys(notesObj).map(key => {
@@ -38,19 +38,19 @@ class App extends Component {
     updates[key] = {...noteObj, ...{id}};
     return firebase
       .database()
-      .ref(`notes/1234`)
+      .ref(`notes/abcd`)
       .update(updates);
   }
   editNoteSummary(noteEditObj) {
     return firebase
       .database()
-      .ref(`notes/1234/${noteEditObj.key}`)
+      .ref(`notes/abcd/${noteEditObj.key}`)
       .update({summary: noteEditObj.summary});
   }
   editNoteDetail(noteEditObj) {
     return firebase
       .database()
-      .ref(`notes/1234/${noteEditObj.key}`)
+      .ref(`notes/abcd/${noteEditObj.key}`)
       .update({detail: noteEditObj.detail});
   }
   render() {
