@@ -6,6 +6,8 @@ To run this project:
 `npm start`
 it is a simple create-react-app Application
 
+the app will be available on:
+http://localhost:3000
 
 1) To Create a note click the + on the top left of the navigation
 2) View a note click on the note in the left navigation
