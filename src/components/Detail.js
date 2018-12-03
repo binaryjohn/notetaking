@@ -18,7 +18,7 @@ class DisplayNote extends React.Component {
     this.handleDetail = this.handleDetail.bind(this);
     this.handleSummary = this.handleSummary.bind(this);
     this.submitEditDetail = this.submitEditDetail.bind(this);
-    this.submitSummaryDetail = this.submitSummaryDetail.bind(this);
+    this.submitEditSummary = this.submitEditSummary.bind(this);
     this.toggleEditDetail = this.toggleEditDetail.bind(this);
     this.toggleEditSummary = this.toggleEditSummary.bind(this);
     this.state = {
@@ -41,8 +41,12 @@ class DisplayNote extends React.Component {
     this.setState({detail: evt.target.value});
   }
 
-  submitEditDetail() {this.props.editDetail(this.state.detail);}
-  submitSummaryDetail() {this.props.editSummary(this.state.summary);}
+  submitEditDetail() {
+    this.props.editDetail({key: this.props.note.key,detail:this.state.detail});
+  }
+  submitEditSummary() {
+    this.props.editSummary({key: this.props.note.key,summary: this.state.summary});
+  }
 
   render() {
     const {note} = this.props;
@@ -59,7 +63,7 @@ class DisplayNote extends React.Component {
               placeholder={note.summary}
             />
             <br />
-            <button onClick={this.submitSummaryDetail}>Sumbit</button>
+            <button onClick={this.submitEditSummary}>Sumbit</button>
             <button onClick={this.toggleEditSummary} >Cancel</button>
           </div>
         ) : (
@@ -71,7 +75,7 @@ class DisplayNote extends React.Component {
           <div>
             <br />
             <textarea placeholder={note.detail} onChange={this.handleDetail} />
-            <button onClick={this.submitSummaryDetail}>Sumbit</button>
+            <button onClick={this.submitEditDetail}>Sumbit</button>
             <button onClick={this.toggleEditDetail} >Cancel</button>
           </div>
         ) : (

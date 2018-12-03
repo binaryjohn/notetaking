@@ -22,7 +22,7 @@ class App extends Component {
     myNotesRef.on('value', snap => {
       const notesObj = snap.val();
       const notes = Object.keys(notesObj).map(key => {
-        return {...notesObj[key]};
+        return {...notesObj[key], ...{key}};
       });
       this.setState({notes});
     });
