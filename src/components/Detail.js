@@ -47,6 +47,7 @@ class DisplayNote extends React.Component {
         key: this.props.note.key,
         detail:this.state.detail
       });
+    this.toggleEditDetail();
   }
   submitEditSummary() {
     this.props.editSummary(
@@ -54,6 +55,7 @@ class DisplayNote extends React.Component {
         key: this.props.note.key,
         summary: this.state.summary
       });
+    this.toggleEditSummary();
   }
 
   render() {
