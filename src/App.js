@@ -46,7 +46,7 @@ class App extends Component {
         <Root>
           <NoteList notes={this.state.notes} />
           <Main>
-            <Route path="/" component={Home} exact={true}/>
+            <Route path="/" component={Home} exact={true} />
             <Route
               exact
               path="/new"
@@ -55,7 +55,9 @@ class App extends Component {
             <Route
               path="/:noteId"
               render={({match}) => (
-                <Detail note={this.state.notes.find(n => n.id == match.params.noteId )} />
+                <Detail
+                  note={this.state.notes.find(n => n.id == match.params.noteId)}
+                />
               )}
             />
           </Main>
