@@ -12,6 +12,10 @@ class NewNote extends React.Component {
       active: true,
     };
   }
+  componentDidMount(){
+    const {summary,detail} = this.props
+    console.log(`summary: ${summary}`);
+  }
   handleSummary(evt) {
     this.setState({summary: evt.target.value});
   }
@@ -33,13 +37,13 @@ class NewNote extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label for="summary">Summary:</label>
+            <label htmlFor="summary">Summary:</label>
             <input
               id="summary"
               type="text"
               value={this.state.summary}
               onChange={this.handleSummary}
-              autocomplete="off"
+              autoComplete="off"
             />
           </div>
           <div>
