@@ -12,6 +12,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.submitNewNote = this.submitNewNote.bind(this);
+    this.editNoteDetail = this.editNoteDetail.bind(this);
+    this.editNoteSummary = this.editNoteSummary.bind(this);
     this.state = {notes: []};
   }
 
@@ -38,6 +40,12 @@ class App extends Component {
       .ref(`notes/1234`)
       .update(updates);
   }
+  editNoteSummary(noteId) {
+    console.log(noteId);
+  }
+  editNoteDetail(noteId) {
+    console.log(noteId);
+  }
   render() {
     return (
       <Router>
@@ -54,6 +62,8 @@ class App extends Component {
               path="/:noteId"
               render={({match}) => (
                 <Detail
+                  editSummary={this.editNoteSummary}
+                  editDetail={this.editNoteDetail}
                   note={this.state.notes.find(n => n.id == match.params.noteId)}
                 />
               )}

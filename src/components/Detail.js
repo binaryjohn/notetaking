@@ -17,8 +17,10 @@ class DisplayNote extends React.Component {
     super(props);
     this.handleDetail = this.handleDetail.bind(this);
     this.handleSummary = this.handleSummary.bind(this);
-    this.toggleEditSummary = this.toggleEditSummary.bind(this);
+    this.submitEditDetail = this.submitEditDetail.bind(this);
+    this.submitSummaryDetail = this.submitSummaryDetail.bind(this);
     this.toggleEditDetail = this.toggleEditDetail.bind(this);
+    this.toggleEditSummary = this.toggleEditSummary.bind(this);
     this.state = {
       editSummary: false,
       editDetail: false,
@@ -38,6 +40,10 @@ class DisplayNote extends React.Component {
   handleDetail(evt) {
     this.setState({detail: evt.target.value});
   }
+
+  submitEditDetail() {this.props.editDetail();}
+  submitSummaryDetail() {this.props.editSummary();}
+
   render() {
     const {note} = this.props;
     return note ? (
@@ -56,15 +62,17 @@ class DisplayNote extends React.Component {
         ) : (
           <h1 onClick={this.toggleEditSummary}>{note.summary}</h1>
         )}
+        <div>{note.created}</div>
+        <br />
         {this.state.editDetail ? (
           <div>
             <br />
+            <button/><button onClick={this.toggleEditDetail} >Cancel</button>
             <textarea placeholder={note.detail} onChange={this.handleDetail} />
           </div>
         ) : (
           <div onClick={this.toggleEditDetail}>{note.detail}</div>
         )}
-        <div>{note.created}</div>
       </div>
     ) : null;
   }
