@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './components/Home';
 import Detail from './components/Detail';
 import {Main, Root} from './components';
@@ -12,9 +12,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.submitNewNote = this.submitNewNote.bind(this);
-    this.state = {
-      notes: [],
-    };
+    this.state = {notes: []};
   }
 
   componentDidMount() {
