@@ -27,6 +27,7 @@ class App extends Component {
       this.setState({notes});
     });
   }
+
   submitNewNote(noteObj) {
     const key = firebase
       .database()
@@ -40,11 +41,17 @@ class App extends Component {
       .ref(`notes/1234`)
       .update(updates);
   }
-  editNoteSummary(noteId) {
-    console.log(noteId);
+  editNoteSummary(noteEditObj) {
+    return firebase
+      .database()
+      .ref(`notes/1234/${noteEditObj.key}`)
+      .update({summary: noteEditObj.summary});
   }
-  editNoteDetail(noteId) {
-    console.log(noteId);
+  editNoteDetail(noteEditObj) {
+    return firebase
+      .database()
+      .ref(`notes/1234/${noteEditObj.key}`)
+      .update({detail: noteEditObj.detail});
   }
   render() {
     return (

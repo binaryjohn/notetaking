@@ -42,10 +42,18 @@ class DisplayNote extends React.Component {
   }
 
   submitEditDetail() {
-    this.props.editDetail({key: this.props.note.key,detail:this.state.detail});
+    this.props.editDetail(
+      {
+        key: this.props.note.key,
+        detail:this.state.detail
+      });
   }
   submitEditSummary() {
-    this.props.editSummary({key: this.props.note.key,summary: this.state.summary});
+    this.props.editSummary(
+      {
+        key: this.props.note.key,
+        summary: this.state.summary
+      });
   }
 
   render() {
