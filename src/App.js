@@ -48,6 +48,7 @@ class App extends Component {
           <Main>
             <Route path="/" component={Home} exact={true}/>
             <Route
+              exact
               path="/new"
               render={() => <NewNote handleSubmit={this.submitNewNote} />}
             />
